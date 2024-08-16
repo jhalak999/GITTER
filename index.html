@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialMedia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="#">Gitter</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Stories Section -->
+            <section class="stories">
+                <div class="story">
+                    <img src="story1.jpg" alt="Story 1">
+                    <p>Story 1</p>
+                </div>
+                <div class="story">
+                    <img src="story2.jpg" alt="Story 2">
+                    <p>Story 2</p>
+                </div>
+                <div class="story">
+                    <img src="story3.jpg" alt="Story 3">
+                    <p>Story 3</p>
+                </div>
+                <div class="story">
+                    <img src="story4.jpg" alt="Story 4">
+                    <p>Story 4</p>
+                </div>
+            </section>
+
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <img src="jhalak.jpeg" alt="Profile Picture">
+                    <h2>@mewwer</h2>
+                    <p>i'm just a girl 🎀</p>
+                </div>
+                <h2>Friends</h2>
+                <ul>
+                    <li>
+                        <img src="aarya.jpeg" alt="Friend 1">
+                        <a href="#">@aarya_menon</a>
+                    </li>
+                    <li>
+                        <img src="divvyansh.png" alt="Friend 2">
+                        <a href="#">@its_divyansh</a>
+                    </li>
+                    <li>
+                        <img src="jhalak1.jpeg" alt="Friend 3">
+                        <a href="#">@jhalak_99</a>
+                    </li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <div class="post-creation">
+                    <h2>Heya, what's on your mind?</h2>
+                    <textarea placeholder="Write something..."></textarea>
+
+                    <!-- New Image Upload Feature -->
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img src="upload-icon.png" alt="Upload Icon">
+                            <span>Upload Image</span>
+                        </label>
+                        <input id="file-input" type="file" accept="image/*">
+                    </div>
+
+                    <div class="image-preview">
+                        <img id="preview-img" src="#" alt="Image Preview" style="display:none;">
+                    </div>
+
+                    <button>Post</button>
+                </div>
+
+                <article class="post">
+                    <header>
+                        <img src="aarya.jpeg" alt="Profile Picture">
+                        <h3>@aarya_menon</h3>
+                    </header>
+                    <img src="view.jpeg" alt="Posted Image" class="post-image">
+                    <footer>
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                    </footer>
+                </article>
+
+                <article class="post">
+                    <header>
+                        <img src="jhalak1.jpeg" alt="Profile Picture">
+                        <h3>@jhalak_99</h3>
+                    </header>
+                    <img src="vieww.jpeg" alt="Posted Image" class="post-image">
+                    <footer>
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                    </footer>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SocialMedia. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

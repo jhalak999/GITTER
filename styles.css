@@ -1,0 +1,578 @@
+To add the ability for users to post pictures on your social media website, you'll need to extend the HTML and CSS. I'll show you how to add a feature where users can select and preview images before posting. This example will still avoid JavaScript for now, focusing only on HTML and CSS.
+
+### Updated HTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialMedia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="#">SocialMedia</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <aside class="sidebar">
+                <div class="profile-card">
+                    <img src="jhalak.jpeg" alt="Profile Picture">
+                    <h2>User Name</h2>
+                    <p>Bio: Enthusiastic about social media.</p>
+                </div>
+                <h2>Friends</h2>
+                <ul>
+                    <li>
+                        <img src="aarya.jpeg" alt="Friend 1">
+                        <a href="#">Friend 1</a>
+                    </li>
+                    <li>
+                        <img src="divvyansh.png" alt="Friend 2">
+                        <a href="#">Friend 2</a>
+                    </li>
+                    <li>
+                        <img src="jhalak1.jpeg" alt="Friend 3">
+                        <a href="#">Friend 3</a>
+                    </li>
+                </ul>
+            </aside>
+
+            <section class="content">
+                <div class="post-creation">
+                    <h2>What's on your mind?</h2>
+                    <textarea placeholder="Write something..."></textarea>
+
+                    <!-- New Image Upload Feature -->
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img src="upload-icon.png" alt="Upload Icon">
+                            <span>Upload Image</span>
+                        </label>
+                        <input id="file-input" type="file" accept="image/*">
+                    </div>
+
+                    <div class="image-preview">
+                        <img id="preview-img" src="#" alt="Image Preview" style="display:none;">
+                    </div>
+
+                    <button>Post</button>
+                </div>
+
+                <article class="post">
+                    <header>
+                        <img src="profile-pic.jpg" alt="Profile Picture">
+                        <h3>User Name</h3>
+                    </header>
+                    <p>This is a sample post with more interactive features.</p>
+                    <img src="sample-post-image.jpg" alt="Posted Image" class="post-image">
+                    <footer>
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                    </footer>
+                </article>
+
+                <article class="post">
+                    <header>
+                        <img src="friend1.jpg" alt="Profile Picture">
+                        <h3>Another User</h3>
+                    </header>
+                    <p>This is another sample post with more interactive features.</p>
+                    <img src="another-sample-post-image.jpg" alt="Posted Image" class="post-image">
+                    <footer>
+                        <button class="like-btn">Like</button>
+                        <button class="comment-btn">Comment</button>
+                    </footer>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SocialMedia. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+```
+
+### Updated CSS
+
+```css
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f5f6;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-color: #f6c6c6;
+    color: #fff;
+    padding: 15px 0;
+}
+
+header .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 28px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+header nav ul li a:hover {
+    background-color: #e8a1a1;
+}
+
+/* Main content styling */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+main .container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 30%;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid #f0e7e9;
+}
+
+.profile-card {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #f6c6c6;
+}
+
+.profile-card h2 {
+    margin: 10px 0;
+    color: #e8a1a1;
+    font-weight: 600;
+}
+
+.sidebar h2 {
+    margin-bottom: 15px;
+    color: #e8a1a1;
+    font-weight: 600;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sidebar ul li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #f6c6c6;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    color: #e8a1a1;
+}
+
+/* Content styling */
+.content {
+    width: 65%;
+}
+
+.post-creation {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #f0e7e9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-creation h2 {
+    margin-bottom: 15px;
+    color: #e8a1a1;
+    font-weight: 600;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 15px;
+    border: 1px solid #f0e7e9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    resize: none;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Image Upload Feature */
+.image-upload {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.image-upload label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #e8a1a1;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.image-upload label img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.image-upload input[type="file"] {
+    display: none;
+}
+
+.image-preview {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px solid #f0e7e9;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #f6c6c6;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #e8a1a1;
+}
+
+/* Post styling */
+.post {
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #f0e7e9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #f6c6c6;
+}
+
+.post header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.post p {
+    margin: 15px 0;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Styling for the image within the post */
+.post-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 1px solid #f0e7e9;
+}
+
+.post footer {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.like-btn, .comment-btn {
+    padding: 8px 15px;
+    border: none;
+    background: #e8a1a1;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: background 0.3s ease;
+}
+
+.like-btn:hover, .comment-btn:hover {
+    background: #d08b8b;
+}
+
+/* Footer styling */
+footer {
+    background-color: #f6c6c6;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+/* Add a subtle hover effect on links in the footer */
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    main .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+    }
+
+    .content h2 {
+        font-size: 18px;
+    }
+
+    .post header h3 {
+        font-size: 16px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    button, .like-btn, .comment-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .post p {
+        font-size: 14px;
+    }
+
+    .post-image {
+        max-height: 200px;
+    }
+}
+
+/* Stories Section */
+.stories {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0e7e9;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.story {
+    position: relative;
+    flex: 0 0 auto;
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    background: #f6c6c6;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e8a1a1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+}
+
+.story img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story p {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2px 0;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .story {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+    }
+
+    .story p {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .story {
+        width: 50px;
+        height: 50px;
+    }
+
+    .story p {
+        font-size: 8px;
+    }
+}
+

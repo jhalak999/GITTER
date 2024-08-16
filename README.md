@@ -1,2 +1,2 @@
 # GITTER
-Social Media Applicstion
+Social Media Application
